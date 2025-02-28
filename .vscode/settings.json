@@ -1,15 +1,4 @@
 {
-  // Auto generate metadata
-  "emeraldwalk.runonsave": {
-    "commands": [
-      {
-        "match": "package.json",
-        "isAsync": true,
-        "cmd": "npm run update"
-      }
-    ]
-  },
-
   // Disable the default formatter, use eslint instead
   // "prettier.enable": false,
   "editor.formatOnSave": false,
@@ -33,17 +22,4 @@
     { "rule": "*semi", "severity": "off" }
   ],
 
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml"
-  ]
 }

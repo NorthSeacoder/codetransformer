@@ -1,20 +1,20 @@
 {
-  "publisher": "Northseacoder",
-  "name": "ext-name",
-  "displayName": "ext-name",
+  "publisher": "NorthSeacoder",
+  "name": "codetransformer",
+  "displayName": "CodeTransformer",
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@10.4.1",
-  "description": "",
-  "author": "Northseacoder",
-  "license": "MIT",
-  "homepage": "https://github.com/Northseacoder/ext-name#readme",
+  "description": "Transform code using Babel with custom rules",
+  "author": "NorthSeacoder",
+  "license": "WTFPL",
+  "homepage": "https://github.com/NorthSeacoder/codetransformer#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Northseacoder/ext-name"
+    "url": "https://github.com/NorthSeacoder/codetransformer"
   },
   "bugs": {
-    "url": "https://github.com/Northseacoder/ext-name/issues"
+    "url": "https://github.com/NorthSeacoder/codetransformer/issues"
   },
   "categories": [
     "Other"
@@ -33,17 +33,41 @@
     "onStartupFinished"
   ],
   "contributes": {
-    "commands": [],
+    "commands": [
+      {
+        "command": "codetransformer.transformCode",
+        "title": "Transform Code"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "codetransformer.transformCode",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
-      "type": "object",
-      "title": "ext-name",
-      "properties": {}
+      "title": "CodeTransformer",
+      "properties": {
+        "codetransformer.webpackConfig": {
+          "type": "string",
+          "default": "",
+          "description": "Webpack配置文件的路径"
+        },
+        "codetransformer.tsConfig": {
+          "type": "string",
+          "default": "",
+          "description": "TypeScript配置文件的路径"
+        }
+      }
     }
   },
   "scripts": {
     "cz": "git add . && git-cz",
-    "build": "tsup src/index.ts --external vscode",
-    "dev": "nr build --watch --sourcemap",
+    "clear": "rimraf dist/dist",
+    "build": "nr clear && env NODE_ENV=production tsup",
+    "dev": "env NODE_ENV=development nr build",
     "prepare": "nr update",
     "update": "vscode-ext-gen --output src/generated/meta.ts",
     "lint": "eslint .",
@@ -57,7 +81,10 @@
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.1",
     "@antfu/ni": "^23.3.1",
+    "@types/babel__core": "^7.20.5",
+    "@types/madge": "^5.0.3",
     "@types/node": "^22.13.4",
+    "@types/resolve": "^1.20.6",
     "@types/vscode": "^1.97.0",
     "@vscode/vsce": "^3.2.2",
     "bumpp": "^10.0.3",
@@ -67,6 +94,7 @@
     "esno": "^4.8.0",
     "pnpm": "^10.4.1",
     "reactive-vscode": "^0.2.10",
+    "rimraf": "^6.0.1",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
@@ -82,5 +110,8 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@nsea/depseeker": "0.0.1"
   }
 }
