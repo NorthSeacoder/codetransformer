@@ -2,7 +2,7 @@
   "publisher": "NorthSeacoder",
   "name": "codetransformer",
   "displayName": "CodeTransformer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@10.4.1",
   "description": "Transform code using Babel with custom rules",
