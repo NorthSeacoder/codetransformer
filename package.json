@@ -65,7 +65,7 @@
   },
   "scripts": {
     "cz": "git add . && git-cz",
-    "clear": "rimraf dist/dist",
+    "clear": "rimraf dist",
     "build": "nr clear && env NODE_ENV=production tsup",
     "dev": "env NODE_ENV=development nr build",
     "prepare": "nr update",

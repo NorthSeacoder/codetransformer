@@ -1,6 +1,5 @@
 import { defineConfig } from 'tsup'
 const env = process.env.NODE_ENV;
-console.log(env);
 export default defineConfig({
   entry: [
     'src/index.ts',
