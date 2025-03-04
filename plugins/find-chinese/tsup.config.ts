@@ -8,5 +8,5 @@ export default defineConfig({
   clean: true,
   target: 'es2022',
   external: ['@babel/core'],
-  noExternal: ['@babel/helper-plugin-utils']
+  noExternal: ['@babel/helper-plugin-utils'],
 })

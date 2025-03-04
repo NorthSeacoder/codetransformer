@@ -40,31 +40,31 @@
 #### 示例插件：`find-chinese.js`
 
 ```javascript
-import { declare } from '@babel/helper-plugin-utils';
-import { hasChineseCharacter } from './utils';
+import { declare } from '@babel/helper-plugin-utils'
+import { hasChineseCharacter } from './utils'
 
 export default declare(() => {
-  const chineseTexts = new Set();
+  const chineseTexts = new Set()
 
   return {
     name: 'find-chinese',
     visitor: {
       'StringLiteral|JSXText|TemplateElement': (path) => {
-        const value = path.isTemplateElement() ? path.node.value.raw : path.node.value || '';
+        const value = path.isTemplateElement() ? path.node.value.raw : path.node.value || ''
         if (hasChineseCharacter(value)) {
-          chineseTexts.add(value);
+          chineseTexts.add(value)
         }
       }
     },
     post(file) {
-      file.metadata['output'] = {
+      file.metadata.output = {
         content: Array.from(chineseTexts).join('\n'),
         filename: 'chinese-texts.txt'
-      };
-      file.metadata['notTransform'] = true; // 不修改源文件
+      }
+      file.metadata.notTransform = true // 不修改源文件
     }
-  };
-});
+  }
+})
 ```
 
 #### `metadata` 字段说明

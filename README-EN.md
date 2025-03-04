@@ -26,10 +26,10 @@ Create a `.transformer.json` file in your project root to define transformation 
 
 ```json
 {
-    "rules": {
-        "plugins": ["@babel/plugin-transform-arrow-functions"],
-        "presets": ["@babel/preset-env"]
-    }
+  "rules": {
+    "plugins": ["@babel/plugin-transform-arrow-functions"],
+    "presets": ["@babel/preset-env"]
+  }
 }
 ```
 
@@ -40,31 +40,31 @@ Craft your own Babel plugins (e.g., for extracting Chinese text). Here’s an ex
 #### Example Plugin: `find-chinese.js`
 
 ```javascript
-import {declare} from '@babel/helper-plugin-utils';
-import {hasChineseCharacter} from './utils';
+import { declare } from '@babel/helper-plugin-utils'
+import { hasChineseCharacter } from './utils'
 
 export default declare(() => {
-    const chineseTexts = new Set();
+  const chineseTexts = new Set()
 
-    return {
-        name: 'find-chinese',
-        visitor: {
-            'StringLiteral|JSXText|TemplateElement': (path) => {
-                const value = path.isTemplateElement() ? path.node.value.raw : path.node.value || '';
-                if (hasChineseCharacter(value)) {
-                    chineseTexts.add(value);
-                }
-            }
-        },
-        post(file) {
-            file.metadata['output'] = {
-                content: Array.from(chineseTexts).join('\n'),
-                filename: 'chinese-texts.txt'
-            };
-            file.metadata['notTransform'] = true; // Do not modify source files
+  return {
+    name: 'find-chinese',
+    visitor: {
+      'StringLiteral|JSXText|TemplateElement': (path) => {
+        const value = path.isTemplateElement() ? path.node.value.raw : path.node.value || ''
+        if (hasChineseCharacter(value)) {
+          chineseTexts.add(value)
         }
-    };
-});
+      }
+    },
+    post(file) {
+      file.metadata.output = {
+        content: Array.from(chineseTexts).join('\n'),
+        filename: 'chinese-texts.txt'
+      }
+      file.metadata.notTransform = true // Do not modify source files
+    }
+  }
+})
 ```
 
 #### `metadata` Fields
@@ -81,9 +81,9 @@ Reference local plugins in `.transformer.json`:
 
 ```json
 {
-    "rules": {
-        "plugins": ["./plugins/find-chinese.js"]
-    }
+  "rules": {
+    "plugins": ["./plugins/find-chinese.js"]
+  }
 }
 ```
 
@@ -100,9 +100,9 @@ Reference local plugins in `.transformer.json`:
 
 ```json
 {
-    "rules": {
-        "plugins": ["@babel/plugin-transform-arrow-functions"]
-    }
+  "rules": {
+    "plugins": ["@babel/plugin-transform-arrow-functions"]
+  }
 }
 ```
 

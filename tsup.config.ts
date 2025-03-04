@@ -1,5 +1,7 @@
+import process from 'node:process'
 import { defineConfig } from 'tsup'
-const env = process.env.NODE_ENV;
+
+const env = process.env.NODE_ENV
 export default defineConfig({
   entry: [
     'src/index.ts',
@@ -10,10 +12,10 @@ export default defineConfig({
   format: ['cjs'],
   shims: false,
   dts: false,
-  target: 'es2022', 
+  target: 'es2022',
   external: [
     'vscode',
-    '@babel/preset-typescript'
+    '@babel/preset-typescript',
   ],
-  noExternal:['@nsea/depseeker']
+  noExternal: ['@nsea/depseeker'],
 })

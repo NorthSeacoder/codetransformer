@@ -1,33 +1,33 @@
 {
-    "name": "@codetransformer/find-chinese",
-    "version": "0.0.1",
-    "description": "",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "build": "tsup",
-        "dev": "tsup --watch",
-        "typecheck": "tsc --noEmit"
-    },
-    "publishConfig": {
-        "access": "public",
-        "registry": "https://registry.npmjs.org/"
-    },
-    "keywords": [
-        "babel-plugin",
-        "vscode-extension-codetransformer"
-    ],
-    "author": "NorthSeacoder",
-    "license": "WTFPL",
-    "dependencies": {
-        "@babel/helper-plugin-utils": "^7.26.5"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.26.9",
-        "@types/babel__core": "^7.20.5",
-        "@types/babel__helper-plugin-utils": "^7.10.3",
-        "@types/node": "^22.13.4",
-        "tsup": "^8.3.6",
-        "typescript": "^5.7.3"
-    }
+  "name": "@codetransformer/find-chinese",
+  "version": "0.0.1",
+  "description": "",
+  "author": "NorthSeacoder",
+  "license": "WTFPL",
+  "keywords": [
+    "babel-plugin",
+    "vscode-extension-codetransformer"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.26.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__helper-plugin-utils": "^7.10.3",
+    "@types/node": "^22.13.4",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
+  }
 }
